@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Home</title>
+</head>
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+<body>
+	<div class="container mt-3">
+		<div class="row ">
+			<div class="col-10 ">All Employee</div>
+			<a th:href="@{/employees/add}" class="btn btn-success col">Add</a>
+
+		</div>
+		<hr>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Salary</th>
+					<th>Birthday</th>
+					<th>City</th>
+					<th>Gender</th>
+					<th>Is Active</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<th:block th:each="emp: ${employees}">
+					<tr>
+						<td th:text="${emp.name}">Aung</td>
+						<td th:text="${emp.salary}">10000</td>
+						<td th:text="${emp.birthday}">1999-09-01</td>
+						<td th:text="${emp.city}">Yangon</td>
+						<td th:text="${emp.gender}">Male</td>
+						<td th:text="${emp.active}">Single</td>
+						<td>
+							<a th:href="@{'/employees/' + ${emp.id}}" class="text-primary">Edit</a> 
+							<a th:href="@{'/employees/delete/' + ${emp.id}}" class="text-danger">Date</a>
+						</td>
+					</tr>
+				</th:block>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

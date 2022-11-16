@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{storefront-template}"
+	th:with="title1='register', title2='register'">
+
+<head>
+<title>ChangePhoto</title>
+</head>
+<body>
+	<section layout:fragment="content-body" class="ftco-section">
+		<div class="container">
+			<div class="row d-flex justify-content-center">
+				<h3>Change Photo</h3>
+			</div>
+			<hr />
+
+			<div class="row d-flex justify-content-center">
+				<form th:action="@{/shop/user/save}" method="POST" class="form" th:object="${changePass}"  enctype="multipart/form-data">
+					
+					<input type="hidden" th:field="*{id}" />
+					<input type="hidden" th:field="*{photo}" />
+					<div class="row d-none">
+						<div class="col">
+							<div class="mb-3">
+								<label for="" class="form-label">Name</label>
+								<input type="text" class="form-control" placeholder="Your Name" required="required" th:field="*{name}" />
+							</div>
+						</div>
+						<div class="col d-none">
+							<div class="mb-3">
+								<label for="" class="form-label">Phone</label>
+								<input type="text" class="form-control" placeholder="phone" required="required" th:field="*{phone}" />
+							</div>
+						</div>
+					</div>
+					<div class="row d-none">
+						<div class="col">
+							<div class="mb-3">
+								<label for="" class="form-label">Email</label>
+								<input type="email" class="form-control" placeholder="Your Email" required="required" th:field="*{email}" />
+							</div>
+						</div>
+						<div class="col d-none">
+							<div class="mb-3">
+								<label for="" class="form-label">Password</label>
+								<input type="password" class="form-control" placeholder="password" required="required" th:field="*{password}" />
+							</div>
+						</div>
+					</div>
+					<div class="form-group d-none">
+									<select th:field="*{role}"  class="form-control form-control-user">
+										<th:block th:each="role : ${customerroles}">
+											<option th:value="${role}" th:text="${role}" ></option>
+										</th:block>
+									</select>
+                                </div>
+					 <div class="row d-none">
+						<div class="col">
+							<div class="mb-3">
+								<label for="" class="form-label">Address</label>
+								<input type="text" class="form-control" placeholder="Address" required="required" th:field="*{address}" />
+							</div>
+						</div>
+					</div> 
+					<div class="row">
+						<div class="col">
+							<div class="mb-3">
+								<label for="" class="form-label">Choose Image</label><br />
+								<input class="" type="file" id="formFile" name="photo_file">
+							</div>
+						</div>
+					</div>
+					
+					 
+					<div class="row d-flex justify-content-center">
+						<button class="btn btn-primary px-5 ">Change</button>
+					</div>
+
+				</form>
+			</div>
+
+		</div>
+	</section>
+
+	
+</body>
+</html>

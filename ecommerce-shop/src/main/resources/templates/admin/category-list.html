@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{admin/admin-template}"
+		th:with="title1='Category Collection', title2='Product'">
+<head>
+<meta charset="ISO-8859-1">
+<title>Cateogry</title>
+	
+</head>
+<body>
+
+	<div class="container-fluid" layout:fragment="content-body">
+		<div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800" layout:fragment="sub-title">Catrgory List</h1>
+            <a th:href="@{/admin/category/add}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" layout:fragment="add-link">
+        		<i class="fa fa-plus-circle text-white-50" aria-hidden="true"></i>
+        		Add
+        	</a>
+    	</div>
+
+            
+                  
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Category Example</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+											<th>ID</th>
+											<th>Name</th>
+											<th>Image</th>
+											<th>Action</th>
+										</tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+											<th>ID</th>
+											<th>Name</th>
+											<th>Image</th>
+											<th>Action</th>
+										</tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <th:block th:each="cate : ${categoryList}">
+											<tr>
+													<td th:text="${cate.id}">ID</td>
+													<td th:text="${cate.name}">Name</td>
+													<td>
+														<img th:src="@{${cate.photoPath}}" width="50" height="50" alt="" />
+													</td>
+													<td>
+														<a th:href="@{'/admin/category/edit/' + ${cate.id}}" class="text-success">Edit</a>
+														<a th:href="@{'/admin/category/delete/' + ${cate.id}}" class="text-danger">Delete</a>
+													</td>
+												</tr>
+										</th:block> 
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+	
+</body>
+</html>

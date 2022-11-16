@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/admin-template}"
+	th:with="title1='Product Collection', title2='Product'">
+<head>
+	<title>User</title>
+</head>
+<body>
+	<h3 layout:fragment="sub-title">User Login</h3>
+	<a th:href="@{/admin/users}" class="btn btn-danger" layout:fragment="add-link">Back</a> 
+
+	
+		
+		<section class="ftco-section bg-light" layout:fragment="content-body">
+    	<div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4"><th:block th:text="${user.id == 0 ? 'Create an Account!' : 'Login'}"></h1>
+                            </div>
+                            <form th:action="@{/admin/users/save}" th:object="${user}" class="form " method="post">
+                             
+								<div class="alert alert-danger" th:if="${param.error}">
+									<p class="text-center">Authentication Fail</p>
+								</div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" placeholder="Enter Your Name" th:field="*{name}">
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" class="form-control form-control-user"  placeholder="Enter Email" th:field="*{email}">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" placeholder="Enter password" th:field="*{password}">
+                                </div>
+                                <div class="mb-3">
+									<label>Role</label>
+									<select class="form-select form-control form-control-user" th:field="*{role}">
+										<option th:each="role: ${userRoles}" th:value="${role}" th:text="${role}"></option>
+									</select>
+								</div>
+								<div class="form-group">
+                                    <input type="text" class="form-control form-control-user" placeholder="Enter Phone" th:field="*{phone}">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" placeholder="Enter Address" th:field="*{address}">
+                                </div>
+                                
+                                
+                                <button  class="btn btn-primary btn-user btn-block col-4">Create</button>
+                                
+                            </form>
+                            <hr>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+</body>
+</html>

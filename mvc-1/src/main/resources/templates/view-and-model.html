@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>MVC</title>
+<!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+<!-- <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<script th:src="@/js/"></script> -->
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.min.css}">
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+	<div class="container mt-4">
+		<h1 class="text-primary">Model and View</h1>
+		
+		Current Date: [(${date})]
+		Result: [(${msg})]
+		
+		
+	</div>
+</body>
+</html>

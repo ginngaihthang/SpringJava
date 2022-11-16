@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/admin-template}"
+	>
+<head>
+	<title>Customer</title>
+</head>
+<body>
+	 <div class="container-fluid" layout:fragment="content-body">
+        <!-- Page Heading -->
+		<div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800" layout:fragment="sub-title"><th:block th:text="${customer.id == 0 ? 'Add' : 'Edit'}"></th:block> Product</h1>
+            <a th:href="@{/admin/customer}" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" layout:fragment="add-link">
+        		<i class="fa fa-arrow-circle-left text-white-50" aria-hidden="true"></i>
+        		Back
+        	</a>
+    	</div>
+    	
+
+       
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-6 offset-lg-3 offset-md-2">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4"><th:block th:text="${customer.id == 0 ? 'Insert New' : 'Edit'}"></th:block> Product</h1>
+                            </div>
+                            <form th:action="@{/admin/customer/save}" class="form" th:object="${customer}" method="post" enctype="multipart/form-data">
+                             	<input type="hidden" th:field="*{id}" />
+								<input type="hidden" th:field="*{photo}" />
+								
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" placeholder="Enter Customer Name" th:field="*{name}">
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" class="form-control form-control-user"  placeholder="Enter Phone" th:field="*{phone}">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control form-control-user" placeholder="Enter Email" th:field="*{email}">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control form-control-user" placeholder="Enter Product Name" th:field="*{password}">
+                                </div>
+                                <div class="form-group">
+									<select th:field="*{role}"  class="form-control form-control-user">
+										<th:block th:each="role : ${roles}">
+											<option th:value="${role}" th:text="${role}" ></option>
+										</th:block>
+									</select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" placeholder="Enter Address" th:field="*{address}">
+                                </div>
+                                <div class="form-group">
+                                    <input class="" type="file" id="formFile" name="photo_file">
+                                </div>
+                                
+                                <button  class="btn btn-primary btn-user btn-block col-4">Save</button>
+                                
+                            </form>
+                            <hr>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    
+</body>
+</html>

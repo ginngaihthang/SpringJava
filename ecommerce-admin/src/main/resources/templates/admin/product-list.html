@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{admin-template}">
+<head>
+<meta charset="ISO-8859-1">
+<title>Product</title>
+	
+</head>
+<body>
+
+	<h3 layout:fragment="sub-title">Product List</h3>
+	<a th:href="@{products/add}" class="btn btn-success" layout:fragment="add-link">Add</a>
+	
+	<table class="table table table-dark table-striped mt-3" layout:fragment="content-body">
+                    <!-- Page Heading -->
+           
+            <tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Price</th>
+				<th>Category</th>
+				<th>Image</th>
+				<th>Action</th>
+			</tr>
+			<th:block th:each="prod : ${productList}">
+				<tr>
+					<td th:text="${prod.id}">ID</td>
+					<td th:text="${prod.name}">Name</td>
+					<td th:text="${prod.price}">Price</td>
+					<td th:text="${prod.category.name}">Cateogry</td>
+					<td >
+						<img th:src="@{${prod.photoPath}}"  width="50" height="50"/>
+					</td>
+					<td>
+						<a th:href="@{'/products/edit/' + ${prod.id}}" class="text-success">Edit</a>
+						<a th:href="@{'/products/delete/' + ${prod.id}}" class="text-danger">Delete</a>
+					</td>
+				</tr>
+			</th:block>
+	</table>
+	
+</body>
+</html>

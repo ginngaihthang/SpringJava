@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{admin-template}">
+<head>
+<meta charset="ISO-8859-1">
+<title>Product Add</title>
+
+</head>
+<body>
+	<!-- <h3 layout:fragment="sub-title" class=""><th:block th:text="${category.id == 0 ? 'Add' : 'Edit'}"></th:block> Category</h3> -->
+	<a layout:fragment="add-link" th:href="@{/categories}" class="btn btn-success w-50">Back</a>
+	
+	<form layout:fragment="content-body" th:action="@{/categories/save}" th:object="${category}" method="post" enctype="multipart/form-data"  class="form col-6" >
+			<input type="hidden" th:field="*{id}" /> 
+			
+			<div class="mb-3">
+				<label for="" class="form-label">Name</label>
+				<input type="text" class="form-control" th:field="*{name}"  required="required"/>
+			</div>
+			<div class="mb-3">
+			  <input class="form-control" type="file" id="formFile" name="photo_file">
+			</div>
+			<button class="btn btn-success float-end" >Save</button>
+		</form>
+</body>
+</html>

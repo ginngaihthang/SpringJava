@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{admin/admin-template}"
+		>
+<head>
+<meta charset="ISO-8859-1">
+<title>Customer</title>
+	
+</head>
+<body>
+
+	<div class="container-fluid" layout:fragment="content-body">
+		<div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800" layout:fragment="sub-title">Customer List</h1>
+            <a th:href="@{/admin/customer/add}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" layout:fragment="add-link">
+        		<i class="fa fa-plus-circle text-white-50" aria-hidden="true"></i>
+        		Add
+        	</a>
+    	</div>
+
+            
+                  
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Customer Record</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+											<th>ID</th>
+											<th>Name</th>
+											<th>Email</th>
+											<th>Phone</th>
+											<th>Address</th>
+											<th>Image</th>
+											<th>Action</th>
+										</tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+											<th>ID</th>
+											<th>Name</th>
+											<th>Email</th>
+											<th>Phone</th>
+											<th>Address</th>
+											<th>Image</th>
+											<th>Action</th>
+										</tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <th:block th:each="cust : ${customerList}">
+											<tr>
+													<td th:text="${cust.id}"></td>
+													<td th:text="${cust.name}"></td>
+													<td th:text="${cust.email}"></td>
+													<td th:text="${cust.phone}"></td>
+													<td th:text="${cust.address}"></td>
+													<td>
+														<img th:src="@{${cust.photoUrl}}" width="50" height="50" alt="img" />
+													</td>
+													<td>
+														
+														<a th:href="@{'/admin/customer/delete/' + ${cust.id}}" class="text-danger">Delete</a>
+													</td> 
+												</tr>
+										</th:block> 
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+	
+</body>
+</html>

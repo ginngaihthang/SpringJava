@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en"
+			xmlns:th="http://www.thymeleaf.org"
+			xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+	 <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Admin</title>
+    <meta charset="utf-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <meta name="description" content="">
+    <meta name="author" content=""> -->
+
+    
+
+    <!-- Custom fonts for this template-->
+    <link th:href="@{/admin/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link th:href="@{/admin/css/sb-admin-2.min.css}" rel="stylesheet">
+	<th:block layout:fagment="css"></th:block>
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">Food<sup>Admin</sup></div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/admin/orderItems}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Order</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+            
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/admin}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Product</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+            
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/admin/menus}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Menu</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+            
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/admin/users}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>User</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+         
+
+        </ul>
+        <!-- End of Sidebar -->
+
+     
+        <div class="container-fluid p-0 m-0">
+        
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+        <a th:href="@{/shop}" class="btn btn-info btn-sm"><-</a>
+                    <ul class="navbar-nav ml-auto">
+                    	
+                    	
+                        <div class="topbar-divider d-none d-sm-block"></div>
+						
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow container-fluid">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">User Info</span>
+                                <img class="img-profile " th:src="@{/admin/img/undraw_profile.svg}">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" th:href="@{/admin/profile}">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profile
+                                </a>
+                                <a class="dropdown-item" th:href="@{/admin/settings}">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Settings
+                                </a>
+                                
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item a-logout-admin" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </nav>
+        		<div class="mt-3 row">
+              			<div class="col-10">
+							<h3 class="px-3" layout:fragment="sub-title">Sub Title</h3>
+						</div>
+						<div class="col-2">
+							<a layout:fragment="add-link" href="" class="btn btn-success w-50">Add</a>
+						</div>
+              	</div>
+        		<div class="contianer">
+                <!-- Begin Page Content -->
+                	<div class="" layout:fragment="content-body">
+	
+	                </div>
+        		</div>
+                 
+            </div>
+        </div>
+        
+        
+        <!-- End of Content Wrapper -->
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <form th:action="@{/logout}" class="logout-form d-none" method="post">
+   		<input type="submit" value="lagout" />
+   </form>
+
+    <!-- Bootstrap core JavaScript-->
+    <script th:src="@{/admin/vendor/jquery/jquery.min.js}"></script>
+    <script th:src="@{/admin/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script th:src="@{/admin/vendor/jquery-easing/jquery.easing.min.js}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script th:src="@{/admin/js/sb-admin-2.min.js}"></script>
+    
+    <script>
+    	$(document).ready(function() {
+    		$('a.a-logout-admin').click(function(evt) {
+    			evt.preventDefault();
+    			$('.logout-form').submit();
+    		})
+    		
+    	});
+    </script>
+
+</body>
+
+</html>

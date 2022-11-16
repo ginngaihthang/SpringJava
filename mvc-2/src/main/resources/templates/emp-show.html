@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Home</title>
+</head>
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+<body>
+	<div class="container mt-3">
+
+		<table class="table -5" th:object="${employee_obj}">
+			<tr>
+				<td>Name</td>
+				<td th:text="*{name}"></td>
+			</tr>
+			<tr>
+				<td>Salary</td>
+				<td th:text="*{salary}"></td>
+			</tr>
+			<tr>
+				<td>Birthday</td>
+				<td th:text="*{birthday}"></td>
+			</tr>
+			<tr>
+				<td>City</td>
+				<td th:text="*{city}"></td>
+			</tr>
+			<tr>
+				<td>Address</td>
+				<td th:text="*{address}"></td>
+			</tr>
+			<tr>
+				<td>Gender</td>
+				<td th:text="*{gender}"></td>
+			</tr>
+			<tr>
+				<td>Is Active</td>
+				<td th:text="*{active} ? 'yes' : 'no'"></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

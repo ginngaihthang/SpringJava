@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{admin/admin-template}">
+<head>
+<meta charset="ISO-8859-1">
+<title>OrderItem</title>
+	
+</head>
+<body>
+
+	<h3 layout:fragment="sub-title">OrderItem List</h3>
+	<a th:href="@{/shop/products/add}" class="btn btn-success d-none" layout:fragment="add-link">Add</a>
+	
+	<table class="table table table-dark table-striped mt-3" layout:fragment="content-body">
+                    <!-- Page Heading -->
+           
+            <tr>
+				<th>ID</th>
+				<th>Order Name</th>
+				<th>Product</th>
+				<th>Quantity</th>
+			</tr>
+			<th:block th:each="order : ${orderItemList}">
+				<tr>
+					<td th:text="${order.id}">ID</td>
+					<td th:text="${order.order.customer.name}"></td>
+					<td th:text="${order.product.name}"></td>
+					<td th:text="${order.quantity}"></td>
+					
+					
+				</tr>
+			</th:block>
+	</table>
+	
+</body>
+</html>

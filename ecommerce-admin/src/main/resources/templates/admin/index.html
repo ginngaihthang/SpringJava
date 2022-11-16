@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{admin/admin-template}"
+		th:with="title1='Category Collection', title2='Product'">
+<head>
+<meta charset="ISO-8859-1">
+<title>OrderItem</title>
+	
+</head>
+<body>
+	<h3 layout:fragment="sub-title">OrederItem List</h3>
+	
+	<a th:href="@{/categories/add}" class="btn btn-success" layout:fragment="add-link">Add</a>
+	
+	<table class="table" layout:fragment="content-body">
+		<tr>
+			<th>ID</th>
+			<th>Order</th>
+			<th>Product</th>
+			<th>Quantity</th>
+		</tr>
+		<th:block th:each="cate : ${categoryList}">
+			<tr>
+					<td th:text="${cate.id}">ID</td>
+					<td th:text="${cate.name}">Name</td>
+					<td>
+						<img th:src="@{${cate.photoPath}}" width="50" height="50" alt="" />
+					</td>
+					<td>
+						<a th:href="@{'/categories/edit/' + ${cate.id}}" class="text-success">Edit</a>
+						<a th:href="@{'/categories/delete/' + ${cate.id}}" class="text-danger">Delete</a>
+					</td>
+				</tr>
+		</th:block> 
+		
+	</table>
+	
+	 
+	
+</body>
+</html>

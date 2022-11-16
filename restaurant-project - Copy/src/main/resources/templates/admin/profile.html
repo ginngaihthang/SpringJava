@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{admin/admin-template}"
+		th:with="title1='My Profile', title2='Profile'">
+<head>
+<meta charset="ISO-8859-1">
+<title>Profile</title>
+	
+</head>
+<body>
+
+	<h3 layout:fragment="sub-title">Profile List</h3>
+	<a th:href="@{/admin/}" class="btn btn-success d-none" layout:fragment="add-link">Add</a>
+	
+	
+	<div layout:fragment="content-body">
+		<div class="row full-screen align-items-center">
+                    <div class="col-6 text-center" th:each="user: ${userList}">
+                        <!-- <h4><span th:text="${user.id}">Hello</span></p> -->
+                        <p>Name - <span class="text-warning h4" th:text="${user.name}">Hello</span></p>
+                        <p>Email - <span class="text-warning " th:text="${user.email}">Hello</span></p>
+                        <p>Phone - <span class="text-warning " th:text="${user.phone}">Hello</span></p>
+                         <p>Address - <span class="text-warning " th:text="${user.address}">Hello</span></p>
+                    </div>
+                    <div class="col-6 rowhome-img ">
+                        <div class="img-box inner-shadow">
+                            <img class="img-profile " width="300px" height="300px" th:src="@{/admin/img/undraw_profile.svg}">
+                        </div>
+                    </div>
+                </div>
+	</div>
+	
+	
+</body>
+</html>

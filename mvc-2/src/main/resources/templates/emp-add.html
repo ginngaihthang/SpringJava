@@ -1,0 +1,72 @@
+,   <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Home</title>
+</head>
+<link rel="stylesheet"  th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+<body>
+	<div class="container mt-3">
+		<div class="row">
+			<h3 class="col-10">Add Employee</h3>
+			<a href="@{/}" class="btn btn-success col">Back</a>
+		</div>
+		<hr>
+		<form th:action="@{/employees/save}" class="form col-6" th:object="${employee_obj}" method="post">
+		<div class="mb-3 alert alert-danger" th:if="${#fields.hasErrors('global')}">
+			<p th:each="err: ${#fields.errors('global')}" th:text="${err}"></p>
+		</div>
+		<div class="mb-3 alert alert-danger" th:if="${#fields.hasAnyErrors()}">
+			<ul>
+				<li th:each="err: ${#fields.allErrors()}" th:text="${err}"></li>
+			</ul>
+		</div>
+		<input type="hidden" th:field="*{id}" />
+		<div class="mb-3">
+				<label class="form-label">Name</label>
+				<input type="text" class="form-control" th:field="*{name}"/>
+				<span class="text-danger small" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+			</div>
+			<div class="mb-3">
+				<label class="form-label">Salary</label>
+				<input type="number" class="form-control" th:field="*{salary}"/>
+				<span class="text-danger small" th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}"></span>
+			</div>
+			<div class="mb-3">
+				<label class="form-label">Birthday</label>
+				<input type="date" class="form-control" th:field="*{birthday}"/>
+			</div>
+			<div class="mb-3">
+				<label class="form-label">City</label>
+				<select name="text" id="" class="form-select" th:field="*{city}">
+					<th:block th:each="city: ${cities}">
+					<option value="" th:value="${city}"  th:text="${city}"></option>
+					</th:block>			
+				</select>
+			</div>
+			<div class="mb-3 row">
+				<div class="col-2"><label class="form-label">Gender</label></div>
+				<div class="col">
+					<div class="form-check form-check-inline">
+					  <input class="form-check-input" name="gender" type="radio" id="male" value="male" th:field="*{gender}">
+					  <label class="form-check-label" for="male">Male</label>
+					</div>
+					<div class="form-check form-check-inline">
+					  <input class="form-check-input" name="gender" type="radio" id="female" value="female" th:field="*{gender}">
+					  <label class="form-check-label" for="female">Female</label>
+					</div>
+				</div>
+			</div>
+			<div class="mb-3" >
+				<label for="" class="form-label">Address detail</label>
+				<textarea rows="" cols="" class="form-control" th:field="*{address}"></textarea>
+			</div>
+			<div class="mb-3">
+				<input class="form-check-label" type="checkbox" id="inlineCheck" th:field="*{active}"/>
+				<label class="form-check-label" for="inlineCheck">Is Active</label>
+			</div>
+			<button class="btn btn-success float-end">Save</button>
+		</form>
+	</div>
+</body>
+</html>

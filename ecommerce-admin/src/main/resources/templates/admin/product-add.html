@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin-template}"
+	th:with="title1='Product Collection', title2='Product'">
+<head>
+	<title>Home</title>
+</head>
+<body>
+	<h3 layout:fragment="sub-title">Product List</h3>
+	<a th:href="@{/}" class="btn btn-success" layout:fragment="add-link">Back</a>
+
+	<section class="ftco-section bg-light" layout:fragment="content-body">
+    	<div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Product Add</h1>
+                            </div>
+                            <form th:action="@{/products/save}" class="form" th:object="${product}" method="post" enctype="multipart/form-data">
+                             	<input type="hidden" th:field="*{id}" />
+								<input type="hidden" th:field="*{photo}" />
+								<div class="form-group">
+                                    <label for="" class="form-label">Category</label>
+									<select th:field="*{category.id}" class="form-control form-control-user">
+										<th:block th:each="cate: ${categories}">
+											<option th:value="${cate.id}" th:text="${cate.name}" ></option>
+										</th:block>
+									</select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" placeholder="Enter Product Name" th:field="*{name}">
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" class="form-control form-control-user"  placeholder="Enter Price" th:field="*{price}">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" placeholder="Enter Description" th:field="*{description}">
+                                </div>
+                                <div class="form-group">
+                                    <input class="" type="file" id="formFile" name="photo_file">
+                                </div>
+                                
+                                <button  class="btn btn-primary btn-user btn-block col-4">Save</button>
+                                
+                            </form>
+                            <hr>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+</body>
+</html>

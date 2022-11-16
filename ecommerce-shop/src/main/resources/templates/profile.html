@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorate="~{storefront-template}"
+	th:with="title1='My Profile', title2='My Profile'">
+
+<head>
+<title>customer</title>
+</head>
+<body>
+	<section layout:fragment="content-body" class="ftco-section">
+		<div class="container">
+			<div class="row d-flex justify-content-center">
+				<h3>My Information</h3>
+			</div>
+			<hr />
+
+			<div class="row">
+                    <div class="col-lg-6 col-md-8 col-12 offset-lg-3 offset-md-2">
+                        <div class="">
+                            <div class="text-center">
+                               <!--  <h1 class="h4 text-gray-900 mb-4"></h1> -->
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                     <div class="col-xl-8 col-lg-10 text-center" >
+                                     <img class="mb-4 rounded-circle border border-5 border-warning" th:src="@{${loginUser.photoUrl}}" style="width: 15rem;height: 15rem;" />
+                                     <a th:href="@{'/shop/changePhoto/' + ${loginUser.id}}">    
+                                     	<i data-feather="camera"></i>
+                                     </a>
+                                     <br />
+                                     <a th:href="@{'/shop/changePassword/' + ${loginUser.id}}" class="btn btn-warning rounded-pill px-3 btn-small">ChangePassword</a>
+                                     <a href="#" class="btn btn-outline-secondary rounded-pill px-3 btn-small a-log-out">Layout</a>
+                                     <h3 class="page-header-title mt-3" th:text="${loginUser.name}"></h3>
+                                    <p class="page-header-text" th:text="${loginUser.email}"></p>
+                                     <p class="page-header-text" th:text="${loginUser.phone}"></p>
+                                    <p class="page-header-text" th:text="${loginUser.address}"></p>
+                                                                       
+                                 </div>
+                             </div>
+                            <hr>
+                           
+                        </div>
+                    </div>
+                </div>
+
+		</div>
+	</section>
+	<form th:action="@{/logout}" class="logout-form d-none" method="post">
+						<input type="submit" value="Logout"/>
+	</form>
+
+	<th:block layout:fragment="js" >
+	<script src="https://unpkg.com/feather-icons"></script>
+	
+		<script>
+		  feather.replace();
+		  $(document).ready(function() {
+			  	$('a.a-log-out').click(function(evt) {
+					evt.preventDefault();
+					$('.logout-form').submit();
+				 });
+			  });
+  </script>
+	</th:block>
+</body>
+</html>

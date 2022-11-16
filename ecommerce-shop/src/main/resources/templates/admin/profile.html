@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{admin/admin-template}">
+<head>
+<meta charset="ISO-8859-1">
+<title>Admin</title>
+
+</head>
+<body>
+	<div class="container-fluid" layout:fragment="content-body">
+        <!-- Page Heading -->
+		<div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800" layout:fragment="sub-title">Admin Information</h1>
+            <a th:href="@{/admin/customer}" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm rounded-pill px-3" layout:fragment="add-link">
+        		<i class="fa fa-arrow-circle-left text-white-50" aria-hidden="true"></i>
+        		Back
+        	</a>
+    	</div>
+	
+	
+	<div class="row">
+                    <div class="col-lg-6 col-md-8 col-12 offset-lg-3 offset-md-2">
+                        <div class="">
+                            <div class="text-center">
+                               <!--  <h1 class="h4 text-gray-900 mb-4"></h1> -->
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                     <div class="col-xl-8 col-lg-10 text-center" >
+                                     <img class="mb-4 rounded-circle border border-5 border-warning" th:src="@{${admin.photoUrl}}" style="width: 15rem;height: 15rem;" />
+                                     <br />
+                                     <a th:href="@{'/admin/changePassword/' + ${cust.id}}" class="btn btn-warning rounded-pill px-3 btn-small">ChangePassword</a>
+                                     <a href="#" class="btn btn-outline-secondary rounded-pill px-3 btn-small a-log-out">Layout</a>
+                                     <h3 class="page-header-title mt-3" th:text="${admin.name}"></h3>
+                                      
+                                    <p class="page-header-text" th:text="${admin.email}"></p>
+                                     <p class="page-header-text" th:text="${admin.phone}"></p>
+                                    <p class="page-header-text" th:text="${admin.address}"></p>
+                                   
+                                    
+                                 </div>
+                             </div>
+                            <hr>
+                           
+                        </div>
+                    </div>
+                </div>
+	
+	</div>
+	
+	<form th:action="@{/logout}" class="logout-form d-none" method="post">
+						<input type="submit" value="Logout"/>
+	</form>
+	
+	<th:block layout:fragment="js">
+		<script>
+
+  $(document).ready(function() {
+	  	$('a.a-log-out').click(function(evt) {
+			evt.preventDefault();
+			$('.logout-form').submit();
+		 });
+	  });
+  </script>
+	</th:block>
+</body>
+</html>

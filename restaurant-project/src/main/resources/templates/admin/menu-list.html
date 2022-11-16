@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{admin/admin-template}"
+		th:with="title1='Category Collection', title2='Product'"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Menu</title>
+	
+</head>
+<body>
+	<h3 layout:fragment="sub-title">Menu List</h3>
+	
+	<a th:href="@{/admin/menus/add}" class="btn btn-primary" layout:fragment="add-link">Add</a>
+	
+	<table class="table table table-dark table-striped mt-3" layout:fragment="content-body">
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Image</th>
+			<th sec:authorize="hasRole('admin')">Action</th>
+		</tr>
+		<th:block th:each="menu : ${menuList}">
+			<tr>
+					<td th:text="${menu.id}">ID</td>
+					<td th:text="${menu.name}">Name</td>
+					<!-- <td>
+						<img th:src="@{${cate.photoUrl}}" width="50" height="60" alt="" />
+					</td> -->
+					<td sec:authorize="hasRole('admin')">
+						<a th:href="@{'/admin/menus/edit/' + ${menu.id}}" class="btn btn-primary btn-sm">Edit</a>
+						<a th:href="@{'/admin/menus/delete/' + ${menu.id}}" class="btn btn-danger btn-sm">Delete</a>
+					</td>
+				</tr>
+		</th:block> 
+		
+	</table>
+</body>
+</html>

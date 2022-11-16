@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{admin/admin-template}">
+<head>
+<meta charset="ISO-8859-1">
+<title>Product Add</title>
+
+</head>
+<body>
+
+	<h3 layout:fragment="sub-title" class=""><th:block th:text="${menu.id == 0 ? 'Add' : 'Edit'}"></th:block> Category</h3>
+	<a layout:fragment="add-link" th:href="@{/admin/menus}" class="btn btn-danger w-50">Back</a>
+
+	<section class="ftco-section ftco-cart" layout:fragment="content-body">
+			<div class="container">
+				<div class="row d-flex justify-content-center">
+					<h3>Menu</h3>
+				</div>
+				<hr />
+				<div class="row d-flex justify-content-center">
+					<form  th:action="@{/admin/menus/save}" th:object="${menu}" method="post" enctype="multipart/form-data"  class="form " >
+						<input type="hidden" th:field="*{id}" /> 
+						
+						<div class="mb-3">
+							<label for="" class="form-label">Name</label>
+							<input type="text" class="form-control" th:field="*{name}" placeholder="Enter Category Name" required="required"/>
+						</div>
+						
+						<button class="btn btn-success float-end" >Save</button>
+					</form>
+				</div>
+				
+			</div>
+		</section>
+	
+	
+	
+</body>
+</html>

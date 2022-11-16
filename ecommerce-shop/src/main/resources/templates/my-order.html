@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{storefront-template}"
+	th:with="title1='My Order', title2='Cart Order'">
+
+<head>
+<title>My Order</title>
+</head>
+<body>
+	<section layout:fragment="content-body" class="ftco-section ftco-cart">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 ftco-animate fadeInUp ftco-animated">
+					<div class="cart-list">
+						<table class="table">
+							<thead class="thead-primary">
+								<tr class="text-center">
+									<th>&nbsp;</th>
+									<th>Id</th>
+									<th>Amount</th>
+									<th>OrderBy</th>
+									<!-- <th>Product</th>
+									<th>Order BY</th>
+									<th>Quantity</th>  -->
+									
+								</tr>
+							</thead>
+							<tbody class="cart-items">
+							<th:block th:each="order : ${orderItems}">
+								<tr class="text-center">
+						        <td class="product-remove"><a th:href="@{'/shop/orders/delete/' + ${order.id}}" class="btn-remove"><span class="ion-ios-close"></span></a></td>
+						        
+						        <!-- <td class="image-prod"><div class="img" style="background-image:url(images/product-3.jpg);"></div></td> -->
+						        
+						       <td th:text="${order.id}">ID</td>
+								<td th:text="${order.amount}"></td>
+								<td th:text="${order.customer.name}"></td>
+								<!--  <td th:text="${order.order.customer.name}"></td>
+								<td th:text="${order.quantity}"></td>
+								<td th:text="${order.product.price} * ${order.quantity}"></td>  -->
+						      </tr>
+								<!-- END TR-->
+							</th:block>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</section>
+	
+	<th:block layout:fragment="js">
+		
+		
+	</th:block>
+</body>
+</html>
